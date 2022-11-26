@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iab_invitados/providers/login_provider.dart';
+import 'package:flutter_iab_invitados/screens/tabs_screen.dart';
 import 'package:flutter_iab_invitados/shared_prefs/user_preferences.dart';
+
+import '../widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -159,7 +162,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: double.infinity,
                             height: 45,
                             child: OutlinedButton(
-                              onPressed: validate,
+                              // onPressed: validate,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => TabsScreen()),
+                                );
+                              },
                               child: const Text('INICIAR SESIÓN',
                                   style: TextStyle(
                                       color: Colors.white,

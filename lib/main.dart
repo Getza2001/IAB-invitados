@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
         title: 'Invitación a Boda',
         debugShowCheckedModeBanner: false,
-        //home: SplashView());
-        //home: nosotrosShow());
-        //home: aboutShow());
-        //home: infCeremonia());
-        home: infMisa());
+        home: SplashView());
+        // home: nosotrosShow());
+        // home: aboutShow());
+        // home: infCeremonia());
+        // home: infMisa());
   }
 }
