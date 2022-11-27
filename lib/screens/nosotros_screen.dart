@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iab_invitados/styles/colors/colors_view.dart';
 
-class nosotrosShow extends StatelessWidget {
-  const nosotrosShow({Key? key}) : super(key: key);
+class NosotrosShow extends StatelessWidget {
+  const NosotrosShow({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

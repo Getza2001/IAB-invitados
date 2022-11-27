@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iab_invitados/styles/colors/colors_view.dart';
 
-class aboutShow extends StatelessWidget {
-  const aboutShow({Key? key}) : super(key: key);
+class AboutShow extends StatelessWidget {
+  const AboutShow({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
