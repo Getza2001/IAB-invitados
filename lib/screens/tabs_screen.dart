@@ -37,10 +37,9 @@ class TabsScreen extends StatelessWidget {
                     fontFamily: 'DancingScript',
                     fontWeight: FontWeight.w500,
                     fontSize: 25.0
-                    // fontStyle: FontStyle.italic
                     ),
               ),
-            ), //  Cambiar despues por el logo
+            ),
             actions: [
               PopupMenuButton(
                 icon: const Icon(Icons.more_vert, color: Colors.black),
@@ -107,7 +106,12 @@ class TabsScreen extends StatelessWidget {
                   ),
                   const Center(child: Text('Boleto')),
                   const Center(child: Text('Mesa'),),
-                  const Center(child: Text('Bebidas'),),
+                  Expanded(child: Column(
+                    children: const [
+                      
+                    ],
+                  )),
+                  // const Center(child: Text('Bebidas'),),
                   const Center(child: Text('Musica')),
                   const Center(child: Text('Fotos'),),
                 ])),
