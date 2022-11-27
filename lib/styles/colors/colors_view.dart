@@ -9,4 +9,5 @@ class ColorSelect {
   static const secondaryText = Color(0xff757575);
   static const icons = Color(0xffFFFFFF);
   static const divider = Color(0xffBDBDBD);
+  static const fondo = Color(0xffFAFAFA);
 }

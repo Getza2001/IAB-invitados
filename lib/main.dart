@@ -18,9 +18,5 @@ class MyApp extends StatelessWidget {
         title: 'Invitación a Boda',
         debugShowCheckedModeBanner: false,
         home: SplashView());
-        // home: nosotrosShow());
-        // home: aboutShow());
-        // home: infCeremonia());
-        // home: infMisa());
   }
 }

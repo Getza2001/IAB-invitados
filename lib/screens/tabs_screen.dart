@@ -45,7 +45,10 @@ class TabsScreen extends StatelessWidget {
               PopupMenuButton(
                 icon: const Icon(Icons.more_vert, color: Colors.black),
                 itemBuilder: (context) {
-                  return menuContent.map((e) => PopupMenuItem<String>(value: e, child: Text(e))).toList();
+                  return menuContent
+                      .map((e) =>
+                          PopupMenuItem<String>(value: e, child: Text(e)))
+                      .toList();
                 },
                 onSelected: (value) {
                   switch (value) {
@@ -54,10 +57,14 @@ class TabsScreen extends StatelessWidget {
                       // showDialog(context: context, builder: (context) => aboutShow());
                       break;
                     case 'Acerca de':
-                      showDialog(context: context, builder: (context) => aboutShow());
+                      showDialog(
+                          context: context,
+                          builder: (context) => const AboutShow());
                       break;
                     case 'Nosotros':
-                      showDialog(context: context, builder: (context) => nosotrosShow());
+                      showDialog(
+                          context: context,
+                          builder: (context) => const NosotrosShow());
                       break;
                     case 'Cerrar sesión':
                       print('Cerrar');
@@ -90,26 +97,33 @@ class TabsScreen extends StatelessWidget {
                   ],
                 ),
                 Expanded(
-                  child: TabBarView(children: [
-                    Column(
-                      children: const [
-                        SizedBox(height: 15),
-                        CustomCard(),
-                        SizedBox(height: 15),
-                        InfoTiempo(),
-                        SizedBox(height: 10),
-                        InfoMisa(),
-                        SizedBox(height: 15),
-                        InfoRecepcion(),
-                        SizedBox(height: 20),
-                        DeslizaBar()
+                    child: TabBarView(children: [
+                  Column(
+                    children: const [
+                      SizedBox(height: 15),
+                      CustomCard(),
+                      SizedBox(height: 15),
+                      InfoTiempo(),
+                      SizedBox(height: 10),
+                      InfoMisa(),
+                      SizedBox(height: 15),
+                      InfoRecepcion(),
+                      SizedBox(height: 20),
+                      DeslizaBar()
                     ],
                   ),
                   const Center(child: Text('Boleto')),
-                  const Center(child: Text('Mesa'),),
-                  const Center(child: Text('Bebidas'),),
+                  // const Center(child: Text('Mesa'),),
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [InfoMesa()]),
+                  Column(
+                      //mainAxisAlignment: MainAxisAlignment.center,
+                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [InfoBebida()]),
                   const Center(child: Text('Musica')),
-                  const Center(child: Text('Fotos'),),
+                  Column(children: const [SizedBox(height: 15), InfoFotos()]),
                 ])),
               ],
             ),
