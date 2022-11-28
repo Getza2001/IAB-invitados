@@ -53,10 +53,10 @@ class TabsScreen extends StatelessWidget {
                       // showDialog(context: context, builder: (context) => aboutShow());
                       break;
                     case 'Acerca de':
-                      showDialog(context: context, builder: (context) => aboutShow());
+                      showDialog(context: context, builder: (context) => AboutShow());
                       break;
                     case 'Nosotros':
-                      showDialog(context: context, builder: (context) => nosotrosShow());
+                      showDialog(context: context, builder: (context) => NosotrosShow());
                       break;
                     case 'Cerrar sesión':
                       print('Cerrar');
@@ -105,15 +105,28 @@ class TabsScreen extends StatelessWidget {
                     ],
                   ),
                   const Center(child: Text('Boleto')),
-                  const Center(child: Text('Mesa'),),
-                  Expanded(child: Column(
-                    children: const [
-                      
+                  // const Center(child: Text('Mesa'),),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const InfoMesa()
                     ],
-                  )),
+                  ),
+                  Column(
+                    children: [
+                      const InfoBebida()
+                    ],
+                  ),
                   // const Center(child: Text('Bebidas'),),
                   const Center(child: Text('Musica')),
-                  const Center(child: Text('Fotos'),),
+                  // const Center(child: Text('Fotos'),),
+                  Column(
+                    children: const [
+                      SizedBox(height: 15),
+                      InfoFotos()
+                    ],
+                  )
                 ])),
               ],
             ),
