@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets.dart';
-import 'about_screen.dart';
+//import 'about_screen.dart';
 import 'nosotros_screen.dart';
 
 class TabsScreen extends StatelessWidget {
@@ -36,15 +36,17 @@ class TabsScreen extends StatelessWidget {
                     color: Colors.black,
                     fontFamily: 'DancingScript',
                     fontWeight: FontWeight.w500,
-                    fontSize: 25.0
-                    ),
+                    fontSize: 25.0),
               ),
             ),
             actions: [
               PopupMenuButton(
                 icon: const Icon(Icons.more_vert, color: Colors.black),
                 itemBuilder: (context) {
-                  return menuContent.map((e) => PopupMenuItem<String>(value: e, child: Text(e))).toList();
+                  return menuContent
+                      .map((e) =>
+                          PopupMenuItem<String>(value: e, child: Text(e)))
+                      .toList();
                 },
                 onSelected: (value) {
                   switch (value) {
@@ -53,10 +55,12 @@ class TabsScreen extends StatelessWidget {
                       // showDialog(context: context, builder: (context) => aboutShow());
                       break;
                     case 'Acerca de':
-                      showDialog(context: context, builder: (context) => AboutShow());
+                      //showDialog(context: context, builder: (context) => AboutShow());
                       break;
                     case 'Nosotros':
-                      showDialog(context: context, builder: (context) => NosotrosShow());
+                      showDialog(
+                          context: context,
+                          builder: (context) => NosotrosShow());
                       break;
                     case 'Cerrar sesión':
                       print('Cerrar');
@@ -89,19 +93,19 @@ class TabsScreen extends StatelessWidget {
                   ],
                 ),
                 Expanded(
-                  child: TabBarView(children: [
-                    Column(
-                      children: const [
-                        SizedBox(height: 15),
-                        CustomCard(),
-                        SizedBox(height: 15),
-                        InfoTiempo(),
-                        SizedBox(height: 10),
-                        InfoMisa(),
-                        SizedBox(height: 15),
-                        InfoRecepcion(),
-                        SizedBox(height: 20),
-                        DeslizaBar()
+                    child: TabBarView(children: [
+                  Column(
+                    children: const [
+                      SizedBox(height: 15),
+                      CustomCard(),
+                      SizedBox(height: 15),
+                      InfoTiempo(),
+                      SizedBox(height: 10),
+                      InfoMisa(),
+                      SizedBox(height: 15),
+                      InfoRecepcion(),
+                      SizedBox(height: 20),
+                      DeslizaBar()
                     ],
                   ),
                   const Center(child: Text('Boleto')),
@@ -109,23 +113,16 @@ class TabsScreen extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const InfoMesa()
-                    ],
+                    children: [const InfoMesa()],
                   ),
                   Column(
-                    children: [
-                      const InfoBebida()
-                    ],
+                    children: [const InfoBebida()],
                   ),
                   // const Center(child: Text('Bebidas'),),
                   const Center(child: Text('Musica')),
                   // const Center(child: Text('Fotos'),),
                   Column(
-                    children: const [
-                      SizedBox(height: 15),
-                      InfoFotos()
-                    ],
+                    children: const [SizedBox(height: 15), InfoFotos()],
                   )
                 ])),
               ],
