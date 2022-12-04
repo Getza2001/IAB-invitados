@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iab_invitados/screens/bebida_screen.dart';
+import 'package:flutter_iab_invitados/screens/foto_screen.dart';
+import 'package:flutter_iab_invitados/screens/mesa_screen.dart';
 
 import '../widgets/widgets.dart';
-//import 'about_screen.dart';
-import 'nosotros_screen.dart';
 
 class TabsScreen extends StatelessWidget {
   TabsScreen({Key? key}) : super(key: key);
@@ -55,7 +56,8 @@ class TabsScreen extends StatelessWidget {
                       // showDialog(context: context, builder: (context) => aboutShow());
                       break;
                     case 'Acerca de':
-                      //showDialog(context: context, builder: (context) => AboutShow());
+                      showDialog(
+                          context: context, builder: (context) => AboutShow());
                       break;
                     case 'Nosotros':
                       showDialog(
@@ -113,16 +115,16 @@ class TabsScreen extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [const InfoMesa()],
+                    children: [const Mesa()],
                   ),
                   Column(
-                    children: [const InfoBebida()],
+                    children: [const Bebida()],
                   ),
                   // const Center(child: Text('Bebidas'),),
                   const Center(child: Text('Musica')),
                   // const Center(child: Text('Fotos'),),
                   Column(
-                    children: const [SizedBox(height: 15), InfoFotos()],
+                    children: const [SizedBox(height: 15), Fotos()],
                   )
                 ])),
               ],

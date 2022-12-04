@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_iab_invitados/screens/infoMapa_screen.dart';
+import '../widgets/widgets.dart';
 
 class InfoRecepcion extends StatelessWidget {
   const InfoRecepcion({Key? key}) : super(key: key);

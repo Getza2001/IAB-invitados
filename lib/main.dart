@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_iab_invitados/screens/about_screen.dart';
+
 import 'package:flutter_iab_invitados/screens/bebida_screen.dart';
 import 'package:flutter_iab_invitados/screens/splash_screen.dart';
-
-import 'package:flutter_iab_invitados/screens/nosotros_screen.dart';
-import 'package:flutter_iab_invitados/screens/infoMapa_screen.dart';
 
 void main() {
   runApp(const MyApp());
