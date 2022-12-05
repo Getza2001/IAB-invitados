@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_iab_invitados/screens/infoMapa_screen.dart';
+import '../widgets/widgets.dart';
 
 class InfoMisa extends StatelessWidget {
   const InfoMisa({super.key});
@@ -54,57 +54,6 @@ class InfoMisa extends StatelessWidget {
             ],
           ),
         ),
-
-        // alignment: FractionalOffset.center,
-        // color: Colors.blue,
-        // width: double.infinity,
-        // margin: EdgeInsets.all(10),
-        // child: Row(
-        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //   children: [
-        //     Container(
-        //       alignment: FractionalOffset.center,
-        //       color: Colors.red,
-        //       margin: EdgeInsets.all(5),
-        //       child: Row(
-        //         children: [
-        //           Row(
-        //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //             children: [
-        //               Container(
-        //                 color: Colors.yellow,
-        //                 child: Row(
-        //                   children: [
-        //                     Icon(Icons.location_on),
-        //                     Text('Misa:')
-        //                   ],
-        //                 ),
-        //               ),
-        //               // Spacer(),
-        //               Container(
-        //                 color: Colors.yellow,
-        //                 child: Column(
-        //                   children: [
-        //                     Text('Catedral de Gualajara, Jalisco.'),
-        //                     Container(
-        //                       child: Row(
-        //                         children: [
-        //                           Text('Hora:'),
-        //                           Text('5:30 PM')
-        //                         ],
-        //                       ),
-        //                     )
-        //                   ],
-        //                 ),
-        //               )
-        //             ],
-        //           ),
-        //           Row()
-        //         ],
-        //       ),
-        //     )
-        //   ]
-        // ),
         onTap: () {
           showDialog(context: context, builder: (context) => const InfMisa());
         });

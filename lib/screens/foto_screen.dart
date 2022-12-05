@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../styles/colors/colors_view.dart';
 
-class InfoFotos extends StatelessWidget {
-  const InfoFotos({super.key});
+class Fotos extends StatelessWidget {
+  const Fotos({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,26 +11,6 @@ class InfoFotos extends StatelessWidget {
       color: ColorSelect.fondo,
       height: 270,
       width: 365,
-
-      // decoration: BoxDecoration(
-      //   color: ColorSelect.fondo,
-
-      //   borderRadius: BorderRadius.circular(5),
-      //   // color: Colors.red,
-      //   // border: Border.all(
-      //   //   style: BorderStyle.none,
-      //   //   color: Colors.grey,
-      //   // ),
-      //   // boxShadow: [
-      //   //   BoxShadow(
-      //   //     blurStyle: BlurStyle.normal,
-      //   //     // color: Colors.grey,
-      //   //     color: Colors.grey.withOpacity(0.4),
-      //   //     spreadRadius: 2,
-      //   //     blurRadius: 2,
-      //   //   )
-      //   // ]
-      // ),
       child: Column(
         children: [
           Container(
