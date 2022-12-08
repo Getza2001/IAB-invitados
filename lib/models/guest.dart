@@ -1,9 +1,3 @@
-import 'package:flutter/material.dart';
-
-// To parse this JSON data, do
-//
-//     final guestsProvider = guestsProviderFromMap(jsonString);
-
 import 'dart:convert';
 
 class GuestsProvider {

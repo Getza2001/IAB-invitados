@@ -1,9 +1,34 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:flutter_iab_invitados/screens/screens.dart';
 import '../styles/colors/colors_view.dart';
 
-class Fotos extends StatelessWidget {
+
+
+
+class Fotos extends StatefulWidget {
+
   const Fotos({super.key});
+
+  @override
+  State<Fotos> createState() => _FotosState();
+
+
+}
+
+class _FotosState extends State<Fotos> {
+
+  ImagePicker picker = ImagePicker();
+  XFile? image;
+
+  Future tomarFoto() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    if(image == null) return;
+    final imageTemp = File(image.path);
+    print("imageTemp lo que sea que sea: $imageTemp");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +103,8 @@ class Fotos extends StatelessWidget {
                           child: OutlinedButton(
                             // onPressed: validate,
                             onPressed: () {
+                              tomarFoto();
+                              // print("aun funcionaaaa");
                               // Navigator.push(
                               //   context,
                               //   MaterialPageRoute(
