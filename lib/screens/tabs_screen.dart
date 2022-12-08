@@ -66,7 +66,9 @@ class TabsScreen extends StatelessWidget {
                       break;
                     case 'Cerrar sesión':
                       print('Cerrar');
-                      // showDialog(context: context, builder: (context) => aboutShow());
+                      showDialog(
+                          context: context,
+                          builder: (context) => CerrarSesion());
                       break;
                   }
                 },

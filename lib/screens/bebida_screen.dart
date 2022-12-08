@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../styles/colors/colors_view.dart';
+import '../widgets/info_bebida.dart';
 
 class Bebida extends StatelessWidget {
   const Bebida({Key? key}) : super(key: key);
@@ -68,13 +69,13 @@ class Bebida extends StatelessWidget {
                             SizedBox(
                               height: 15.0,
                             ),
-                            Text(
-                              'Seleccionar',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: ColorSelect.secondaryText,
-                              ),
-                            )
+                            // Text(
+                            //   'Seleccionar',
+                            //   style: TextStyle(
+                            //     fontSize: 16,
+                            //     color: ColorSelect.secondaryText,
+                            //   ),
+                            // )
                           ],
                         ),
                       ),
@@ -83,6 +84,8 @@ class Bebida extends StatelessWidget {
                 ),
                 onTap: () {
                   print("sin alcohol");
+                  showDialog(
+                      context: context, builder: (context) => BSinAlcohol());
                 },
               ),
               InkWell(
@@ -123,7 +126,7 @@ class Bebida extends StatelessWidget {
                               height: 1.0,
                             ),
                             Text(
-                              '6 Bebidas',
+                              '5 Bebidas',
                               style: TextStyle(
                                 fontSize: 15,
                                 color: ColorSelect.secondaryText,
@@ -132,13 +135,13 @@ class Bebida extends StatelessWidget {
                             SizedBox(
                               height: 15.0,
                             ),
-                            Text(
-                              'Seleccionar',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: ColorSelect.secondaryText,
-                              ),
-                            )
+                            // Text(
+                            //   'Seleccionar',
+                            //   style: TextStyle(
+                            //     fontSize: 16,
+                            //     color: ColorSelect.secondaryText,
+                            //   ),
+                            // )
                           ],
                         ),
                       ),
@@ -147,6 +150,8 @@ class Bebida extends StatelessWidget {
                 ),
                 onTap: () {
                   print("con alcohol");
+                  showDialog(
+                      context: context, builder: (context) => BConAlcohol());
                 },
               ),
             ],

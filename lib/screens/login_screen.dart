@@ -3,8 +3,6 @@ import 'package:flutter_iab_invitados/providers/login_provider.dart';
 import 'package:flutter_iab_invitados/screens/tabs_screen.dart';
 import 'package:flutter_iab_invitados/shared_prefs/user_preferences.dart';
 
-import '../widgets/widgets.dart';
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -14,21 +12,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _passwordVisible = false;
-  // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // UserData userData = UserData();
-
-  // void submit() {
-  //   if (_formKey.currentState!.validate()) {
-  //     _formKey.currentState!.save();
-  //     //loginwithDB();
-  //   }
-  // }
-
-  @override
-  void initState() {
-    _passwordVisible = false;
-    super.initState();
-  }
 
   //Instance the shared preferences
   final prefs = PreferenciasUsuario();
@@ -43,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //Variables
   String _username = "";
   String _password = "";
-  String _textBtnLogin = "LOGIN";
+  String _textBtnLogin = "INICIAR SESIÓN";
   bool _progressLogin = false;
 
   @override
@@ -77,13 +60,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 SizedBox(
                                   height: 30,
                                   child: TextFormField(
-                                    // onSaved: (value) {
-                                    //   //userData.email = value!;
-                                    // },
                                     onSaved: (value) =>
                                         _username = value.toString(),
                                     initialValue: 'cjmc12@hotmail.com',
-                                    //keyboardType: TextInputType.emailAddress,
                                     style: const TextStyle(
                                         fontSize: 15, color: Colors.black),
                                     decoration: InputDecoration(
@@ -162,15 +141,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: double.infinity,
                             height: 45,
                             child: OutlinedButton(
-                              // onPressed: validate,
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => TabsScreen()),
-                                );
+                                _progressLogin ? null : validate();
                               },
-                              child: const Text('INICIAR SESIÓN',
+                              child: Text(_textBtnLogin,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
@@ -179,9 +153,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 backgroundColor:
                                     Color.fromRGBO(255, 64, 129, 1),
                                 elevation: 0,
-                                // shape: RoundedRectangleBorder(
-                                //   borderRadius: BorderRadius.circular(50),
-                                // ),
                               ),
                             ),
                           ),
@@ -211,42 +182,44 @@ class _LoginScreenState extends State<LoginScreen> {
     form!.save();
 
     if (_username.isEmpty || _password.isEmpty) {
-      print("son requeridos");
-      //showMessage('El usuario y la contraseña son requeridos');
+      showMessage('El usuario y la contraseña son requeridos');
     } else {
-      print("validando datos");
-      // setState(() {
-      //   _progressLogin = true;
-      //   _textBtnLogin = "VALIDANDO DATOS...";
-      // });
+      setState(() {
+        _progressLogin = true;
+        _textBtnLogin = "VALIDANDO DATOS...";
+      });
 
       Map response = await loginProvider.loginValidate(_username, _password);
 
-      // if (response['ok'] == true) {
-      //   prefs.logeado = true;
-      //   prefs.idNovios = response['idNovios'];
-      //   prefs.recepcionFecha = response['recepcionFecha'];
-      //   prefs.correoRegistro = _username;
+      if (response['ok'] == true) {
+        prefs.logeado = true;
+        prefs.idNovios = response['idNovios'];
+        prefs.recepcionFecha = response['recepcionFecha'];
+        prefs.correoRegistro = _username;
 
-      //   // Navigator.pushNamedAndRemoveUntil(
-      //   //     context, '/home', ModalRoute.withName('/home'));
-      // } else {
-      //   //showMessage(response['response']);
-      //   setState(() {
-      //     _progressLogin = false;
-      //     _textBtnLogin = "LOGIN";
-      //   });
-      // }
+        print("usuario correcto");
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => TabsScreen()),
+        );
+      } else {
+        print("usuario incorrecto");
+        showMessage(response['response']);
+        setState(() {
+          _progressLogin = false;
+          _textBtnLogin = "INICIAR SESIÓN";
+        });
+      }
     }
   }
 
-  // void showMessage(String message) {
-  //   ScaffoldMessenger.of(context).showSnackBar(
-  //     SnackBar(
-  //       content: Text(message,
-  //           textAlign: TextAlign.center, style: const TextStyle(fontSize: 15)),
-  //       duration: const Duration(seconds: 3),
-  //     ),
-  //   );
-  // }
+  void showMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message,
+            textAlign: TextAlign.center, style: const TextStyle(fontSize: 15)),
+        duration: const Duration(seconds: 3),
+      ),
+    );
+  }
 }
