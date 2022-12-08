@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_iab_invitados/screens/bebida_screen.dart';
-import 'package:flutter_iab_invitados/screens/foto_screen.dart';
-import 'package:flutter_iab_invitados/screens/mesa_screen.dart';
+import 'package:flutter_iab_invitados/screens/screens.dart';
 
 import '../widgets/widgets.dart';
 

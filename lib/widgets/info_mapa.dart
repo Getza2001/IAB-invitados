@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iab_invitados/map/map_utils.dart';
 import 'package:flutter_iab_invitados/styles/colors/colors_view.dart';
 
+
 class InfCeremonia extends StatelessWidget {
+
   const InfCeremonia({Key? key}) : super(key: key);
 
   @override
@@ -25,7 +28,7 @@ class InfCeremonia extends StatelessWidget {
                 style: TextStyle(color: ColorSelect.primary))),
         TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              MapUtils.abrirMapa(20.6895339, -103.3837518);
             },
             child: const Text("SI, IR AL MAPA",
                 style: TextStyle(color: ColorSelect.primary))),
@@ -33,6 +36,8 @@ class InfCeremonia extends StatelessWidget {
     );
   }
 }
+
+
 
 class InfMisa extends StatelessWidget {
   const InfMisa({Key? key}) : super(key: key);
@@ -58,7 +63,7 @@ class InfMisa extends StatelessWidget {
                 style: TextStyle(color: ColorSelect.primary))),
         TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              MapUtils.abrirMapa(20.5431228, -103.4922414);
             },
             child: const Text("SI, IR AL MAPA",
                 style: TextStyle(color: ColorSelect.primary))),
