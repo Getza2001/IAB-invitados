@@ -6,8 +6,8 @@ class LoginProvider {
 
   Future<Map<String, dynamic>> loginValidate(
       String username, String password) async {
-    print("usuario: " + username);
-    print("pass: " + password);
+    // print("usuario: " + username);
+    // print("pass: " + password);
     final url = '$_url/login.php?username=$username&password=$password';
     var response = await http.get(Uri.parse(url));
 
@@ -16,7 +16,7 @@ class LoginProvider {
 
     final Map<String, dynamic> dataLogin = json.decode(response.body);
 
-    print("response: " + response.body);
+    // print("response: " + response.body);
     return dataLogin;
   }
 }

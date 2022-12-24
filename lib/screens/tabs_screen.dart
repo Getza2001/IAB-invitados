@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_iab_invitados/screens/screens.dart';
 
+import 'package:flutter_iab_invitados/screens/screens.dart';
+import 'package:provider/provider.dart';
+
+
+import '../providers/datos_novios_provider.dart';
 import '../widgets/widgets.dart';
 
-class TabsScreen extends StatelessWidget {
-  TabsScreen({Key? key}) : super(key: key);
 
-  final List<String> menuContent = [
+
+class TabsScreen extends StatelessWidget {
+  TabsScreen({Key? key, required this.idNovio}) : super(key: key);
+  final int idNovio;
+
+    final List<String> menuContent = [
     'Configuración',
     'Acerca de',
     'Nosotros',
@@ -15,6 +22,10 @@ class TabsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // final noviosProvider = Provider.of<DatosNoviosProvider>(context);
+    // print('datos novios provider: ${noviosProvider.onDisplayNovios}');
+
     return DefaultTabController(
         length: 6,
         child: Scaffold(
@@ -97,15 +108,15 @@ class TabsScreen extends StatelessWidget {
                 Expanded(
                     child: TabBarView(children: [
                   Column(
-                    children: const [
+                    children: [
                       SizedBox(height: 15),
                       CustomCard(),
                       SizedBox(height: 15),
                       InfoTiempo(),
                       SizedBox(height: 10),
-                      InfoMisa(),
+                      InfoMisa(idNovios: idNovio),
                       SizedBox(height: 15),
-                      InfoRecepcion(),
+                      InfoRecepcion(idNovios: idNovio),
                       SizedBox(height: 20),
                       DeslizaBar()
                     ],

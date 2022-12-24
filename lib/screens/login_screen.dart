@@ -3,6 +3,8 @@ import 'package:flutter_iab_invitados/providers/login_provider.dart';
 import 'package:flutter_iab_invitados/screens/tabs_screen.dart';
 import 'package:flutter_iab_invitados/shared_prefs/user_preferences.dart';
 
+import '../providers/datos_novios_provider.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -11,6 +13,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  var datosNovios = DatosNoviosProvider();
+
+
   bool _passwordVisible = false;
 
   //Instance the shared preferences
@@ -190,18 +196,28 @@ class _LoginScreenState extends State<LoginScreen> {
       });
 
       Map response = await loginProvider.loginValidate(_username, _password);
+      print('response: ${response}');
 
       if (response['ok'] == true) {
         prefs.logeado = true;
         prefs.idNovios = response['idNovios'];
         prefs.recepcionFecha = response['recepcionFecha'];
         prefs.correoRegistro = _username;
+        // asignarValor(response['idNovios']);
+        // print('id novios al loguearse: ${response['idNovios']}');
+        // await Future.delayed(Duration(seconds: 2));
 
-        print("usuario correcto");
+        // print("usuario correcto");
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => TabsScreen()),
+          // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: response['idNovios'],)),
+          MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 48,)),
         );
+
+        //Shared preference
+
+        // print( 'Nombre novia: ${datosNovios.getNombreNovia(1)}');
+        // print( 'Nombre novio: ${datosNovios.getNombreNovio(1)}');
       } else {
         print("usuario incorrecto");
         showMessage(response['response']);
@@ -222,4 +238,12 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+  // void asignarValor( int idNovios ) async {
+  //   // DatosNoviosProvider(idNovios);
+  //   datosNovios.getDatos(idNovios);
+  //   // await Future.delayed(Duration(seconds: 2));
+  //   print('nombre noviaaaa: ${datosNovios.nombreNovia}');
+  // }
+
 }

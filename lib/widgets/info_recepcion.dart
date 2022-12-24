@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
+import '../providers/datos_novios_provider.dart';
 
 class InfoRecepcion extends StatelessWidget {
-  const InfoRecepcion({Key? key}) : super(key: key);
+  const InfoRecepcion({Key? key, required this.idNovios}) : super(key: key);
+  final int idNovios;
 
   @override
   Widget build(BuildContext context) {
