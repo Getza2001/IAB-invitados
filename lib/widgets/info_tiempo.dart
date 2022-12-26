@@ -116,24 +116,41 @@ class InfoTiempo extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  margin: const EdgeInsets.all(9),
+                  margin: const EdgeInsets.all(2),
                   child: Column(
-                    children: const [
-                      Text(
-                        'Min. restantes',
-                        style: TextStyle(fontSize: 12),
+                    children: [
+                      Container(
+                        // color: Colors.red,
+                        width: double.infinity,
+                        child: Text('Min. restantes',
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.visible,
+
+                        ),
                       ),
-                      SizedBox(
-                        height: 1.0,
-                      ),
-                      Text(
-                        '0',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w800),
-                      )
+                      Text('0', textAlign: TextAlign.center,),
                     ],
                   ),
-                ),
+                )
+                // Container(
+                //   margin: const EdgeInsets.all(9),
+                //   child: Column(
+                //     children: const [
+                //       Text(
+                //         'Min. restantes',
+                //         style: TextStyle(fontSize: 12),
+                //       ),
+                //       SizedBox(
+                //         height: 1.0,
+                //       ),
+                //       Text(
+                //         '0',
+                //         style: TextStyle(
+                //             fontSize: 20, fontWeight: FontWeight.w800),
+                //       )
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),

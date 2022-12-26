@@ -1,11 +1,11 @@
+export 'package:flutter_iab_invitados/widgets/about.dart';
+export 'package:flutter_iab_invitados/widgets/CerrarSesión.dart';
 export 'package:flutter_iab_invitados/widgets/custom_card.dart';
 export 'package:flutter_iab_invitados/widgets/desliza_bar.dart';
+export 'package:flutter_iab_invitados/widgets/info_bebida.dart';
+export 'package:flutter_iab_invitados/widgets/info_mapa.dart';
+export 'package:flutter_iab_invitados/widgets/info_mesa.dart';
 export 'package:flutter_iab_invitados/widgets/info_misa.dart';
 export 'package:flutter_iab_invitados/widgets/info_recepcion.dart';
 export 'package:flutter_iab_invitados/widgets/info_tiempo.dart';
-export 'package:flutter_iab_invitados/widgets/info_mesa.dart';
-export 'package:flutter_iab_invitados/widgets/info_bebida.dart';
-export 'package:flutter_iab_invitados/widgets/about.dart';
-export 'package:flutter_iab_invitados/widgets/info_mapa.dart';
 export 'package:flutter_iab_invitados/widgets/nosotros.dart';
-export 'package:flutter_iab_invitados/widgets/CerrarSesión.dart';

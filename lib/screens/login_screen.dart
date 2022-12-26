@@ -196,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
       });
 
       Map response = await loginProvider.loginValidate(_username, _password);
-      print('response: ${response}');
+      // print('response: ${response}');
 
       if (response['ok'] == true) {
         prefs.logeado = true;
@@ -210,8 +210,8 @@ class _LoginScreenState extends State<LoginScreen> {
         // print("usuario correcto");
         Navigator.push(
           context,
-          // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: response['idNovios'],)),
-          MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 48,)),
+          MaterialPageRoute(builder: (context) => TabsScreen(idNovio: response['idNovios'],)),
+          // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 1,)),
         );
 
         //Shared preference
