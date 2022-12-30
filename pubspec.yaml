@@ -40,6 +40,8 @@ dependencies:
   shared_preferences: ^2.0.15
   url_launcher: ^6.1.7
   image_picker: ^0.8.6
+  provider: ^6.0.4
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +51,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/logo.png"
+  image_path: "assets/images/applogo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   # web:
   #   generate: true
