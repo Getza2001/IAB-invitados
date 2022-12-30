@@ -62,44 +62,45 @@ class _BSinAlcoholState extends State<BSinAlcohol> {
                     child: const Text("GUARDAR",
                         style: TextStyle(color: ColorSelect.primary))),
               ),
-              // Wrap(
-              //   children: categories.map((favorite) {
-              //     if (favorite["isChecked"] == true) {
-              //       print(favorite["name"]);
-              //       return Card(
-              //         elevation: 3,
-              //         color: Colors.deepPurpleAccent,
-              //         child: Padding(
-              //           padding: const EdgeInsets.all(8.0),
-              //           child: Row(
-              //             mainAxisSize: MainAxisSize.min,
-              //             children: [
-              //               Text(
-              //                 favorite["name"],
-              //                 style: const TextStyle(color: Colors.white),
-              //               ),
-              //               const SizedBox(
-              //                 width: 5,
-              //               ),
-              //               GestureDetector(
-              //                 onTap: () {
-              //                   setState(() {
-              //                     favorite["isChecked"] = !favorite["isChecked"];
-              //                   });
-              //                 },
-              //                 child: const Icon(
-              //                   Icons.delete_forever_rounded,
-              //                   color: Colors.white,
-              //                 ),
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //       );
-              //     }
-              //     return Container();
-              //   }).toList(),
-              // )
+              Wrap(
+                children: categories.map((favorite) {
+                  if (favorite["isChecked"] == true) {
+                    print(favorite["name"]);
+                    return Card(
+                      elevation: 3,
+                      color: Colors.deepPurpleAccent,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              favorite["name"],
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  favorite["isChecked"] =
+                                      !favorite["isChecked"];
+                                });
+                              },
+                              child: const Icon(
+                                Icons.delete_forever_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
+                  return Container();
+                }).toList(),
+              )
             ]),
           ),
         ),
@@ -168,44 +169,45 @@ class _BConAlcoholState extends State<BConAlcohol> {
                     child: const Text("GUARDAR",
                         style: TextStyle(color: ColorSelect.primary))),
               ),
-              // Wrap(
-              //   children: categories.map((favorite) {
-              //     if (favorite["isChecked"] == true) {
-              //       print(favorite["name"]);
-              //       return Card(
-              //         elevation: 3,
-              //         color: Colors.deepPurpleAccent,
-              //         child: Padding(
-              //           padding: const EdgeInsets.all(8.0),
-              //           child: Row(
-              //             mainAxisSize: MainAxisSize.min,
-              //             children: [
-              //               Text(
-              //                 favorite["name"],
-              //                 style: const TextStyle(color: Colors.white),
-              //               ),
-              //               const SizedBox(
-              //                 width: 5,
-              //               ),
-              //               GestureDetector(
-              //                 onTap: () {
-              //                   setState(() {
-              //                     favorite["isChecked"] = !favorite["isChecked"];
-              //                   });
-              //                 },
-              //                 child: const Icon(
-              //                   Icons.delete_forever_rounded,
-              //                   color: Colors.white,
-              //                 ),
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //       );
-              //     }
-              //     return Container();
-              //   }).toList(),
-              // )
+              Wrap(
+                children: categories.map((favorite) {
+                  if (favorite["isChecked"] == true) {
+                    print(favorite["name"]);
+                    return Card(
+                      elevation: 3,
+                      color: Colors.deepPurpleAccent,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              favorite["name"],
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  favorite["isChecked"] =
+                                      !favorite["isChecked"];
+                                });
+                              },
+                              child: const Icon(
+                                Icons.delete_forever_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
+                  return Container();
+                }).toList(),
+              )
             ]),
           ),
         ),

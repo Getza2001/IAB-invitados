@@ -2,21 +2,25 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class LoginProvider {
-  final String _url = "http://www.invitacionaboda.com/WebService/v1";
+  loginValidate(String correo, String password) {}
+  // final String _url = "http://www.invitacionaboda.com/WS";
 
-  Future<Map<String, dynamic>> loginValidate(
-      String username, String password) async {
-    print("usuario: " + username);
-    print("pass: " + password);
-    final url = '$_url/login.php?username=$username&password=$password';
-    var response = await http.get(Uri.parse(url));
+  // //http://invitacionaboda.com/WS/loginInvitadoExt.aspx?correo=cjmc12@hotmail.com&password=Ceci2215
 
-    //var dataLogin = await json.decode(json.encode(response.body));
-    //http://www.invitacionaboda.com/WebService/v1/login.php?username=cjmc12@hotmail.com&password=admin
+  // Future<Map<String, dynamic>> loginValidate(
+  //     String correo, String password) async {
+  //   print("correo: " + correo);
+  //   print("pass: " + password);
+  //   final url = '$_url/loginInvitadoExt.aspx?correo=$correo&password=$password';
+  //   var response = await http.post(Uri.parse(url));
+  //   print(response);
 
-    final Map<String, dynamic> dataLogin = json.decode(response.body);
+  //   //var dataLogin = await json.decode(json.encode(response.body));
+  //   //http://www.invitacionaboda.com/WebService/v1/login.php?username=cjmc12@hotmail.com&password=admin
 
-    print("response: " + response.body);
-    return dataLogin;
-  }
+  //   final Map<String, dynamic> dataLogin =
+  //       json.decode(json.encode(response.body));
+
+  //   return dataLogin;
+  // }
 }

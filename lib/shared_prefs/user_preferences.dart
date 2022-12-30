@@ -1,54 +1,135 @@
+// import 'package:shared_preferences/shared_preferences.dart';
+
+// class PreferenciasUsuario {
+//   static final PreferenciasUsuario _instance = PreferenciasUsuario._internal();
+
+//   factory PreferenciasUsuario() {
+//     return _instance;
+//   }
+
+//   PreferenciasUsuario._internal();
+
+//   SharedPreferences? _prefs;
+
+//   initPrefs() async {
+//     _prefs = await SharedPreferences.getInstance();
+//   }
+
+//   void clear() {
+//     _prefs?.clear();
+//   }
+
+//   // GET y SET
+//   bool get logeado {
+//     return _prefs?.getBool('logeado') ?? false;
+//   }
+
+//   set logeado(bool value) {
+//     _prefs?.setBool('logeado', value);
+//   }
+
+//   int get idNovios {
+
+//     return _prefs?.getInt('idNovios') ?? 0;
+//   }
+
+//   set idNovios(int value) {
+//     _prefs?.setInt('idNovios', value);
+//   }
+
+//   String get recepcionFecha {
+//     return _prefs?.getString('recepcionFecha') ?? '';
+//   }
+
+//   set recepcionFecha(String value) {
+//     _prefs?.setString('recepcionFecha', value);
+//   }
+
+//   String get correoRegistro {
+//     return _prefs?.getString('correoRegistro') ?? '';
+//   }
+
+//   set correoRegistro(String value) {
+//     _prefs?.setString('correoRegistro', value);
+//   }
+// }
+
 import 'package:shared_preferences/shared_preferences.dart';
 
+int idNovios = 0;
+
 class PreferenciasUsuario {
-  static final PreferenciasUsuario _instance = PreferenciasUsuario._internal();
+  // Creating a field
 
-  factory PreferenciasUsuario() {
-    return _instance;
+  // Using the getter
+  // method to take input
+  int get id_Novios {
+    return idNovios;
   }
 
-  PreferenciasUsuario._internal();
-
-  SharedPreferences? _prefs;
-
-  initPrefs() async {
-    _prefs = await SharedPreferences.getInstance();
+  // Using the setter method
+  // to set the input
+  set id_Novios(int idNovio) {
+    idNovios = idNovio;
   }
 
-  void clear() {
-    _prefs?.clear();
-  }
+  // static final PreferenciasUsuario _instance = PreferenciasUsuario._internal();
+
+  // factory PreferenciasUsuario() {
+  //   return _instance;
+  // }
+
+  // PreferenciasUsuario._internal();
+
+  // late SharedPreferences _prefs;
+
+  // initPrefs() async {
+  //   _prefs = await SharedPreferences.getInstance();
+  // }
+
+  // void clear() {
+  //   _prefs?.clear();
+  // }
 
   // GET y SET
-  bool get logeado {
-    return _prefs?.getBool('logeado') ?? false;
-  }
+  // bool get logeado {
+  //   return _prefs?.getBool('logeado') ?? false;
+  // }
 
-  set logeado(bool value) {
-    _prefs?.setBool('logeado', value);
-  }
+  // set logeado(bool value) {
+  //   _prefs?.setBool('logeado', value);
+  // }
 
-  int get idNovios {
-    return _prefs?.getInt('idNovios') ?? 0;
-  }
+  // Future<int> getIdNovios() async {
+  //   SharedPreferences _prefs = await SharedPreferences.getInstance();
+  //   return _prefs.getInt('idNovios') ?? 0;
+  // }
 
-  set idNovios(int value) {
-    _prefs?.setInt('idNovios', value);
-  }
+  // getValue() async {
+  //   SharedPreferences _prefs = await SharedPreferences.getInstance();
+  //   //Return String
+  //   int? stringValue = _prefs.getInt('idNovios');
+  //   return stringValue;
+  // }
 
-  String get recepcionFecha {
-    return _prefs?.getString('recepcionFecha') ?? '';
-  }
+  // void setIdNovios(int value) async {
+  //   SharedPreferences _prefs = await SharedPreferences.getInstance();
+  //   _prefs.setInt('idNovios', value);
+  // }
 
-  set recepcionFecha(String value) {
-    _prefs?.setString('recepcionFecha', value);
-  }
+  // String get recepcionFecha {
+  //   return _prefs?.getString('recepcionFecha') ?? '';
+  // }
 
-  String get correoRegistro {
-    return _prefs?.getString('correoRegistro') ?? '';
-  }
+  // set recepcionFecha(String value) {
+  //   _prefs?.setString('recepcionFecha', value);
+  // }
 
-  set correoRegistro(String value) {
-    _prefs?.setString('correoRegistro', value);
-  }
+  // String get correoRegistro {
+  //   return _prefs?.getString('correoRegistro') ?? '';
+  // }
+
+  // set correoRegistro(String value) {
+  //   _prefs?.setString('correoRegistro', value);
+  // }
 }

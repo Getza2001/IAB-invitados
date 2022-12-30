@@ -22,7 +22,7 @@ class CerrarSesion extends StatelessWidget {
         TextButton(
             child: const Text("Aceptar"),
             onPressed: () {
-              prefs.clear();
+              //prefs.clear();
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => LoginScreen()),

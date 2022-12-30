@@ -26,15 +26,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   //Provider
-  final loginProvider = LoginProvider();
-
   final novioProvider = NovioProvider();
 
   //Variables
   String _username = "";
-  String _password = "";
-  String _textBtnLogin = "INICIAR SESIÓN";
-  bool _progressLogin = false;
+  String _textBtnLogin = "BUSCAR";
+  bool _progressBuscar = false;
+  int idNovio = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -69,11 +67,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: TextFormField(
                                     onSaved: (value) =>
                                         _username = value.toString(),
-                                    initialValue: 'cjmc12@hotmail.com',
+                                    //initialValue: 'cjmc12@hotmail.com',
                                     style: const TextStyle(
                                         fontSize: 15, color: Colors.black),
                                     decoration: InputDecoration(
-                                      hintText: 'Ingrese su correo electronico',
+                                      hintText:
+                                          'Ingrese nombre de novia o novio',
                                       hintStyle: const TextStyle(
                                           fontSize: 15,
                                           color:
@@ -90,67 +89,66 @@ class _LoginScreenState extends State<LoginScreen> {
                               ],
                             ),
                           ),
-                          SizedBox(
-                            child: Column(
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    const Text('Contraseña',
-                                        style: TextStyle(
-                                            fontSize: 16, color: Colors.black)),
-                                    SizedBox(
-                                      height: 30,
-                                      child: TextFormField(
-                                        // onSaved: (value) {
-                                        //   //userData.password = value!;
-                                        // },
-                                        onSaved: (value) =>
-                                            _password = value.toString(),
-                                        initialValue: 'Ceci2215',
-                                        //Ceci2215
-                                        obscureText: !_passwordVisible,
-                                        enableSuggestions: false,
-                                        autocorrect: false,
-                                        style: const TextStyle(
-                                            fontSize: 15, color: Colors.black),
-                                        toolbarOptions:
-                                            const ToolbarOptions(paste: false),
-                                        decoration: InputDecoration(
-                                          hintText: 'Ingrese su contraseña',
-                                          hintStyle: const TextStyle(
-                                              fontSize: 15,
-                                              color: Color.fromRGBO(
-                                                  139, 139, 139, 1)),
-                                          contentPadding:
-                                              const EdgeInsets.only(bottom: 12),
-                                          suffixIcon: IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  _passwordVisible =
-                                                      !_passwordVisible;
-                                                });
-                                              },
-                                              alignment: Alignment.topCenter,
-                                              icon: Icon(_passwordVisible
-                                                  ? Icons.visibility
-                                                  : Icons.visibility_off)),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
+                          // SizedBox(
+                          //   child: Column(
+                          //     children: [
+                          //       Column(
+                          //         crossAxisAlignment: CrossAxisAlignment.start,
+                          //         mainAxisAlignment:
+                          //             MainAxisAlignment.spaceAround,
+                          //         children: [
+                          //           const Text('Contraseña',
+                          //               style: TextStyle(
+                          //                   fontSize: 16, color: Colors.black)),
+                          //           SizedBox(
+                          //             height: 30,
+                          //             child: TextFormField(
+                          //               // onSaved: (value) {
+                          //               //   //userData.password = value!;
+                          //               // },
+                          //               onSaved: (value) =>
+                          //                   _password = value.toString(),
+                          //               initialValue: 'admin',
+                          //               obscureText: !_passwordVisible,
+                          //               enableSuggestions: false,
+                          //               autocorrect: false,
+                          //               style: const TextStyle(
+                          //                   fontSize: 15, color: Colors.black),
+                          //               toolbarOptions:
+                          //                   const ToolbarOptions(paste: false),
+                          //               decoration: InputDecoration(
+                          //                 hintText: 'Ingrese su contraseña',
+                          //                 hintStyle: const TextStyle(
+                          //                     fontSize: 15,
+                          //                     color: Color.fromRGBO(
+                          //                         139, 139, 139, 1)),
+                          //                 contentPadding:
+                          //                     const EdgeInsets.only(bottom: 12),
+                          //                 suffixIcon: IconButton(
+                          //                     onPressed: () {
+                          //                       setState(() {
+                          //                         _passwordVisible =
+                          //                             !_passwordVisible;
+                          //                       });
+                          //                     },
+                          //                     alignment: Alignment.topCenter,
+                          //                     icon: Icon(_passwordVisible
+                          //                         ? Icons.visibility
+                          //                         : Icons.visibility_off)),
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         ],
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
                           SizedBox(
                             width: double.infinity,
                             height: 45,
                             child: OutlinedButton(
                               onPressed: () {
-                                _progressLogin ? null : validate();
+                                _progressBuscar ? null : validate();
                               },
                               child: Text(_textBtnLogin,
                                   style: TextStyle(
@@ -189,23 +187,25 @@ class _LoginScreenState extends State<LoginScreen> {
     var form = formKey.currentState;
     form!.save();
 
-    if (_username.isEmpty || _password.isEmpty) {
-      showMessage('El usuario y la contraseña son requeridos');
+    if (_username.isEmpty) {
+      showMessage('El nombre del novio o novia es requerido');
     } else {
       setState(() {
-        _progressLogin = true;
+        _progressBuscar = true;
         _textBtnLogin = "VALIDANDO DATOS...";
       });
 
-      Map response = await loginProvider.loginValidate(_username, _password);
+      //for (int i = 0; i >= 0; i++) {
+      Map response = await novioProvider.novioShared('karen');
 
-      // if (response['message'] == 'Datos correctos') {
-      // if (response != '') {
-      //   print("entra en metodo ok");
+      print("bien bien");
 
-      //   print(response['idInvitado']);
+      // if (response["invitado"] != "") {
+      //   print("entra cuando es vacio");
 
-      //   // prefss.id_Novios = response['idNovios'];
+      //   print(response);
+
+      //   //prefss.id_Novios = response['idNovios'];
       //   //prefs.logeado = true;
       //   //prefs = response['idNovios'];
 
@@ -213,9 +213,6 @@ class _LoginScreenState extends State<LoginScreen> {
       //   // prefs.correoRegistro = _username;
 
       //   print("usuario correcto");
-
-      //   // Map response2 = await novioProvider.novioValidate(prefss.id_Novios);
-
       //   Navigator.push(
       //     context,
       //     MaterialPageRoute(builder: (context) => TabsScreen()),
@@ -225,15 +222,19 @@ class _LoginScreenState extends State<LoginScreen> {
       //   //                 MaterialPageRoute(builder: (context) {
       //   //               return DashboardRepartidor(
       //   //                   userInfo: userFromJson(response.body));
-      //   //             }));
+      //   //
+      //   //          }));
+      // }
       // } else {
       //   print("usuario incorrecto");
       //   showMessage(response['response']);
       //   setState(() {
-      //     _progressLogin = false;
+      //     _progressBuscar = false;
       //     _textBtnLogin = "INICIAR SESIÓN";
       //   });
       // }
+
+      //}
     }
   }
 

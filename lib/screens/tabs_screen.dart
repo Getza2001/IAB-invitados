@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iab_invitados/screens/guests_screen.dart';
 import 'package:flutter_iab_invitados/screens/screens.dart';
 
 import '../widgets/widgets.dart';
@@ -16,7 +17,7 @@ class TabsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 6,
+        length: 5,
         child: Scaffold(
           appBar: AppBar(
             leading: Builder(
@@ -90,8 +91,7 @@ class TabsScreen extends StatelessWidget {
                     Tab(text: 'Boleto'),
                     Tab(text: 'Mesa'),
                     Tab(text: 'Bebidas'),
-                    Tab(text: 'Música'),
-                    Tab(text: 'Fotos'),
+                    Tab(text: 'Fotos')
                   ],
                 ),
                 Expanded(
@@ -120,9 +120,7 @@ class TabsScreen extends StatelessWidget {
                   Column(
                     children: [const Bebida()],
                   ),
-                  // const Center(child: Text('Bebidas'),),
-                  const Center(child: Text('Musica')),
-                  // const Center(child: Text('Fotos'),),
+
                   Column(
                     children: const [SizedBox(height: 15), Fotos()],
                   )

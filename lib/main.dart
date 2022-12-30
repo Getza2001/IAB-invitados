@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iab_invitados/screens/loginIn_screen.dart';
 
 import 'package:flutter_iab_invitados/screens/splash_screen.dart';
+import 'package:flutter_iab_invitados/screens/foto_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Invitación a Boda',
         debugShowCheckedModeBanner: false,
-        home: SplashView());
+        home: LoginScreen());
+    // home: SplashView());
+    // home: Fotos());
   }
 }
