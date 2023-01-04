@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         // },
                                         onSaved: (value) =>
                                             _password = value.toString(),
-                                        initialValue: 'Ceci2215',
+                                        initialValue: 'admin',
                                         //Ceci2215
                                         obscureText: !_passwordVisible,
                                         enableSuggestions: false,
@@ -190,92 +190,85 @@ class _LoginScreenState extends State<LoginScreen> {
   void validate() async {
     FocusScope.of(context).unfocus();
 
-    // var form = formKey.currentState;
-    // form!.save();
+    var form = formKey.currentState;
+    form!.save();
 
-    // if (_username.isEmpty || _password.isEmpty) {
-    //   showMessage('El usuario y la contraseña son requeridos');
-    // } else {
-    //   setState(() {
-    //     _progressLogin = true;
-    //     _textBtnLogin = "VALIDANDO DATOS...";
-    //   });
+    if (_username.isEmpty || _password.isEmpty) {
+      showMessage('El usuario y la contraseña son requeridos');
+    } else {
+      setState(() {
+        _progressLogin = true;
+        _textBtnLogin = "VALIDANDO DATOS...";
+      });
 
-    //   Map response = await loginProvider.loginValidate(_username, _password);
-    // print('response: ${response}');
+      Map response = await loginProvider.loginValidate(_username, _password);
+    print('responseeee desde login screen: ${response}');
 
-    // if (response['message'] == 'Datos correctos') {
-    // if (response != '') {
-    //   print("entra en metodo ok");
+    if (response['ok'] == true) {
 
-    //   print(response['idInvitado']);
+      print("usuario correcto");
+    int idN = response['idNovios'];
+    print('id novios en el login screen: ${idN} tipo: ${idN.runtimeType}');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TabsScreen(idNovio: response['idNovios'],)),
+            // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 1,)),
+          );
+      // print("entra en metodo ok");
 
-    //   // prefss.id_Novios = response['idNovios'];
-    //   //prefs.logeado = true;
-    //   //prefs = response['idNovios'];
+      // print(response['idInvitado']);
 
-    //   // prefs.recepcionFecha = response['recepcionFecha'];
-    //   // prefs.correoRegistro = _username;
+      // prefss.id_Novios = response['idNovios'];
+      // prefs.logeado = true;
+      // prefs = response['idNovios'];
 
-    //   print("usuario correcto");
+      // prefs.recepcionFecha = response['recepcionFecha'];
+      // prefs.correoRegistro = _username;
 
-    //   // Map response2 = await novioProvider.novioValidate(prefss.id_Novios);
+      // print("usuario correcto");
 
-    //   Navigator.push(
-    //     context,
-    //     MaterialPageRoute(builder: (context) => TabsScreen()),
-    //   );
+      // Map response2 = await novioProvider.novioValidate(prefss.id_Novios);
 
-    //   // Navigator.pushReplacement(context,
-    //   //                 MaterialPageRoute(builder: (context) {
-    //   //               return DashboardRepartidor(
-    //   //                   userInfo: userFromJson(response.body));
-    //   //             }));
-    // } else {
-    //   print("usuario incorrecto");
-    //   showMessage(response['response']);
-    //   setState(() {
-    //     _progressLogin = false;
-    //     _textBtnLogin = "INICIAR SESIÓN";
-    //   });
-    // }
-    // print("usuario correcto");
-    //       Navigator.push(
-    //         context,
-    //         MaterialPageRoute(builder: (context) => TabsScreen(idNovio: response['idNovios'],)),
-    //         // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 1,)),
-    //       );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => TabsScreen()),
+      // );
 
-    //       //Shared preference
+      // Navigator.pushReplacement(context,
+      //                 MaterialPageRoute(builder: (context) {
+      //               return DashboardRepartidor(
+      //                   userInfo: userFromJson(response.body));
+      //             }));
+    } else {
+      print("usuario incorrecto");
+      showMessage(response['response']);
+      setState(() {
+        _progressLogin = false;
+        _textBtnLogin = "INICIAR SESIÓN";
+      });
 
-    //       // print( 'Nombre novia: ${datosNovios.getNombreNovia(1)}');
-    //       // print( 'Nombre novio: ${datosNovios.getNombreNovio(1)}');
-    //     } else {
-    //       print("usuario incorrecto");
-    //       showMessage(response['response']);
-    //       setState(() {
-    //         _progressLogin = false;
-    //         _textBtnLogin = "INICIAR SESIÓN";
-    //       });
-    //     }
-    //   }
-    // }
+          // Shared preference
 
-    // void showMessage(String message) {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(
-    //       content: Text(message,
-    //           textAlign: TextAlign.center, style: const TextStyle(fontSize: 15)),
-    //       duration: const Duration(seconds: 3),
-    //     ),
-    //   );
-    // }
+          // print( 'Nombre novia: ${datosNovios.getNombreNovia(1)}');
+          // print( 'Nombre novio: ${datosNovios.getNombreNovio(1)}');
+        }
+      }
+    }
+
+    void showMessage(String message) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message,
+              textAlign: TextAlign.center, style: const TextStyle(fontSize: 15)),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+    }
 
     // void asignarValor( int idNovios ) async {
-    //   // DatosNoviosProvider(idNovios);
+    //   DatosNoviosProvider(idNovios);
     //   datosNovios.getDatos(idNovios);
-    //   // await Future.delayed(Duration(seconds: 2));
+    //   await Future.delayed(Duration(seconds: 2));
     //   print('nombre noviaaaa: ${datosNovios.nombreNovia}');
     // }
-  }
 }
