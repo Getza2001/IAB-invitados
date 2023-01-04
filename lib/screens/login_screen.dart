@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         // },
                                         onSaved: (value) =>
                                             _password = value.toString(),
-                                        initialValue: 'Ceci2215',
+                                        initialValue: 'admin',
                                         //Ceci2215
                                         obscureText: !_passwordVisible,
                                         enableSuggestions: false,
@@ -200,84 +200,60 @@ class _LoginScreenState extends State<LoginScreen> {
         _progressLogin = true;
         _textBtnLogin = "VALIDANDO DATOS...";
       });
-    }
 
-    // Map response = await loginProvider.loginValidate(_username, _password);
-    // // print(response);
-    // // print(response['idNovios']);
+      Map response = await loginProvider.loginValidate(_username, _password);
+      print('responseeee desde login screen: ${response}');
 
-    // // if (response['message'] == 'Datos correctos') {
-    // // if (response != '') {
-    // //   print("entra en metodo ok");
+      if (response['ok'] == true) {
+        print("usuario correcto");
+        int idN = response['idNovios'];
+        print('id novios en el login screen: ${idN} tipo: ${idN.runtimeType}');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => TabsScreen(
+                    idNovio: response['idNovios'],
+                  )),
+          // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 1,)),
+        );
+        // print("entra en metodo ok");
 
-    // //   print(response['idInvitado']);
+        // print(response['idInvitado']);
 
-    // //   // prefss.id_Novios = response['idNovios'];
-    // //   //prefs.logeado = true;
-    // //   //prefs = response['idNovios'];
+        // prefss.id_Novios = response['idNovios'];
+        // prefs.logeado = true;
+        // prefs = response['idNovios'];
 
-    // //   // prefs.recepcionFecha = response['recepcionFecha'];
-    // //   // prefs.correoRegistro = _username;
+        // prefs.recepcionFecha = response['recepcionFecha'];
+        // prefs.correoRegistro = _username;
 
-    // //   print("usuario correcto");
+        // print("usuario correcto");
 
-    // //   // Map response2 = await novioProvider.novioValidate(prefss.id_Novios);
+        // Map response2 = await novioProvider.novioValidate(prefss.id_Novios);
 
-    // //   Navigator.push(
-    // //     context,
-    // //     MaterialPageRoute(builder: (context) => TabsScreen()),
-    // //   );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => TabsScreen()),
+        // );
 
-    // //   // Navigator.pushReplacement(context,
-    // //   //                 MaterialPageRoute(builder: (context) {
-    // //   //               return DashboardRepartidor(
-    // //   //                   userInfo: userFromJson(response.body));
-    // //   //             }));
-    // // } else {
-    // //   print("usuario incorrecto");
-    // //   showMessage(response['response']);
-    // //   setState(() {
-    // //     _progressLogin = false;
-    // //     _textBtnLogin = "INICIAR SESIÓN";
-    // //   });
-    // // }
-    // print("usuario correcto");
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //       builder: (context) => TabsScreen(
-    //             idNovio: response['idNovios'],
-    //           )),
-    //   // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 1,)),
-    // );
+        // Navigator.pushReplacement(context,
+        //                 MaterialPageRoute(builder: (context) {
+        //               return DashboardRepartidor(
+        //                   userInfo: userFromJson(response.body));
+        //             }));
+      } else {
+        print("usuario incorrecto");
+        showMessage(response['response']);
+        setState(() {
+          _progressLogin = false;
+          _textBtnLogin = "INICIAR SESIÓN";
+        });
 
-    // //Shared preference
+        // Shared preference
 
-    // // print( 'Nombre novia: ${datosNovios.getNombreNovia(1)}');
-    // // print( 'Nombre novio: ${datosNovios.getNombreNovio(1)}');
-    // // } else {
-    // //   print("usuario incorrecto");
-    // //   showMessage(response['response']);
-    // //   setState(() {
-    // //     _progressLogin = false;
-    // //     _textBtnLogin = "INICIAR SESIÓN";
-    // //   });
-    // // }
-
-    Map response = await loginProvider.loginValidate(_username, _password);
-    print('response: ${response}');
-
-    if (response['ok'] == true) {
-      //prefs.logeado = true;
-      // print("usuario correcto");
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => TabsScreen(
-                  idNovio: response['idNovios'],
-                )),
-        // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 1,)),
-      );
+        // print( 'Nombre novia: ${datosNovios.getNombreNovia(1)}');
+        // print( 'Nombre novio: ${datosNovios.getNombreNovio(1)}');
+      }
     }
   }
 
@@ -291,10 +267,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void asignarValor(int idNovios) async {
-    // DatosNoviosProvider(idNovios);
-    datosNovios.getDatos(idNovios);
-    // await Future.delayed(Duration(seconds: 2));
-    print('nombre noviaaaa: ${datosNovios.nombreNovia}');
-  }
+  // void asignarValor( int idNovios ) async {
+  //   DatosNoviosProvider(idNovios);
+  //   datosNovios.getDatos(idNovios);
+  //   await Future.delayed(Duration(seconds: 2));
+  //   print('nombre noviaaaa: ${datosNovios.nombreNovia}');
+  // }
 }

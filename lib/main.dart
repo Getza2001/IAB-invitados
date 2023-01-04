@@ -6,6 +6,7 @@ import 'package:flutter_iab_invitados/screens/splash_screen.dart';
 import 'package:flutter_iab_invitados/screens/foto_screen.dart';
 
 import 'package:flutter_iab_invitados/providers/datos_novios_provider.dart';
+import 'package:flutter_iab_invitados/screens/tabs_screen.dart';
 
 import 'package:provider/provider.dart';
 
@@ -34,8 +35,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Invitación a Boda',
         debugShowCheckedModeBanner: false,
-        home: LoginScreen());
-    // home: SplashView());
+        // home: TabsScreen(idNovio: 1));
+        // home: LoginScreen());
+    home: SplashView());
     // home: Fotos());
   }
 }
