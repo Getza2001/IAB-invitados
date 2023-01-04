@@ -190,92 +190,111 @@ class _LoginScreenState extends State<LoginScreen> {
   void validate() async {
     FocusScope.of(context).unfocus();
 
-    // var form = formKey.currentState;
-    // form!.save();
+    var form = formKey.currentState;
+    form!.save();
 
-    // if (_username.isEmpty || _password.isEmpty) {
-    //   showMessage('El usuario y la contraseña son requeridos');
-    // } else {
-    //   setState(() {
-    //     _progressLogin = true;
-    //     _textBtnLogin = "VALIDANDO DATOS...";
-    //   });
+    if (_username.isEmpty || _password.isEmpty) {
+      showMessage('El usuario y la contraseña son requeridos');
+    } else {
+      setState(() {
+        _progressLogin = true;
+        _textBtnLogin = "VALIDANDO DATOS...";
+      });
+    }
 
-    //   Map response = await loginProvider.loginValidate(_username, _password);
-    // print('response: ${response}');
+    // Map response = await loginProvider.loginValidate(_username, _password);
+    // // print(response);
+    // // print(response['idNovios']);
 
-    // if (response['message'] == 'Datos correctos') {
-    // if (response != '') {
-    //   print("entra en metodo ok");
+    // // if (response['message'] == 'Datos correctos') {
+    // // if (response != '') {
+    // //   print("entra en metodo ok");
 
-    //   print(response['idInvitado']);
+    // //   print(response['idInvitado']);
 
-    //   // prefss.id_Novios = response['idNovios'];
-    //   //prefs.logeado = true;
-    //   //prefs = response['idNovios'];
+    // //   // prefss.id_Novios = response['idNovios'];
+    // //   //prefs.logeado = true;
+    // //   //prefs = response['idNovios'];
 
-    //   // prefs.recepcionFecha = response['recepcionFecha'];
-    //   // prefs.correoRegistro = _username;
+    // //   // prefs.recepcionFecha = response['recepcionFecha'];
+    // //   // prefs.correoRegistro = _username;
 
-    //   print("usuario correcto");
+    // //   print("usuario correcto");
 
-    //   // Map response2 = await novioProvider.novioValidate(prefss.id_Novios);
+    // //   // Map response2 = await novioProvider.novioValidate(prefss.id_Novios);
 
-    //   Navigator.push(
-    //     context,
-    //     MaterialPageRoute(builder: (context) => TabsScreen()),
-    //   );
+    // //   Navigator.push(
+    // //     context,
+    // //     MaterialPageRoute(builder: (context) => TabsScreen()),
+    // //   );
 
-    //   // Navigator.pushReplacement(context,
-    //   //                 MaterialPageRoute(builder: (context) {
-    //   //               return DashboardRepartidor(
-    //   //                   userInfo: userFromJson(response.body));
-    //   //             }));
-    // } else {
-    //   print("usuario incorrecto");
-    //   showMessage(response['response']);
-    //   setState(() {
-    //     _progressLogin = false;
-    //     _textBtnLogin = "INICIAR SESIÓN";
-    //   });
-    // }
+    // //   // Navigator.pushReplacement(context,
+    // //   //                 MaterialPageRoute(builder: (context) {
+    // //   //               return DashboardRepartidor(
+    // //   //                   userInfo: userFromJson(response.body));
+    // //   //             }));
+    // // } else {
+    // //   print("usuario incorrecto");
+    // //   showMessage(response['response']);
+    // //   setState(() {
+    // //     _progressLogin = false;
+    // //     _textBtnLogin = "INICIAR SESIÓN";
+    // //   });
+    // // }
     // print("usuario correcto");
-    //       Navigator.push(
-    //         context,
-    //         MaterialPageRoute(builder: (context) => TabsScreen(idNovio: response['idNovios'],)),
-    //         // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 1,)),
-    //       );
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //       builder: (context) => TabsScreen(
+    //             idNovio: response['idNovios'],
+    //           )),
+    //   // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 1,)),
+    // );
 
-    //       //Shared preference
+    // //Shared preference
 
-    //       // print( 'Nombre novia: ${datosNovios.getNombreNovia(1)}');
-    //       // print( 'Nombre novio: ${datosNovios.getNombreNovio(1)}');
-    //     } else {
-    //       print("usuario incorrecto");
-    //       showMessage(response['response']);
-    //       setState(() {
-    //         _progressLogin = false;
-    //         _textBtnLogin = "INICIAR SESIÓN";
-    //       });
-    //     }
-    //   }
-    // }
+    // // print( 'Nombre novia: ${datosNovios.getNombreNovia(1)}');
+    // // print( 'Nombre novio: ${datosNovios.getNombreNovio(1)}');
+    // // } else {
+    // //   print("usuario incorrecto");
+    // //   showMessage(response['response']);
+    // //   setState(() {
+    // //     _progressLogin = false;
+    // //     _textBtnLogin = "INICIAR SESIÓN";
+    // //   });
+    // // }
 
-    // void showMessage(String message) {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(
-    //       content: Text(message,
-    //           textAlign: TextAlign.center, style: const TextStyle(fontSize: 15)),
-    //       duration: const Duration(seconds: 3),
-    //     ),
-    //   );
-    // }
+    Map response = await loginProvider.loginValidate(_username, _password);
+    print('response: ${response}');
 
-    // void asignarValor( int idNovios ) async {
-    //   // DatosNoviosProvider(idNovios);
-    //   datosNovios.getDatos(idNovios);
-    //   // await Future.delayed(Duration(seconds: 2));
-    //   print('nombre noviaaaa: ${datosNovios.nombreNovia}');
-    // }
+    if (response['ok'] == true) {
+      //prefs.logeado = true;
+      // print("usuario correcto");
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => TabsScreen(
+                  idNovio: response['idNovios'],
+                )),
+        // MaterialPageRoute(builder: (context) => TabsScreen(idNovio: 1,)),
+      );
+    }
+  }
+
+  void showMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message,
+            textAlign: TextAlign.center, style: const TextStyle(fontSize: 15)),
+        duration: const Duration(seconds: 3),
+      ),
+    );
+  }
+
+  void asignarValor(int idNovios) async {
+    // DatosNoviosProvider(idNovios);
+    datosNovios.getDatos(idNovios);
+    // await Future.delayed(Duration(seconds: 2));
+    print('nombre noviaaaa: ${datosNovios.nombreNovia}');
   }
 }
